@@ -51,7 +51,8 @@ if DEV_BOT:
     print("DEV BOT")
     TOKEN = cfg.CONFIG['token_dev']
 else:
-    TOKEN = cfg.CONFIG['token']
+    TOKEN = os.environ['token']
+
 try:
     sid = int(sys.argv[1])
     if str(sid) in cfg.CONFIG["sapphires"]:
@@ -174,7 +175,7 @@ def cleanup(client, tick_):
                 ADMIN_CHANNEL = client.get_channel(cfg.CONFIG['admin_channel'])
 
         if ADMIN is None:
-            ADMIN = await client.fetch_user(cfg.CONFIG['admin_id'])
+            ADMIN = await client.fetch_user(os.environ['admin_id'])
 
     asyncio.get_event_loop().create_task(first_start(client))
 

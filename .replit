@@ -1,0 +1,2 @@
+run="echo hello world"
+onBoot="echo Booting up!"
